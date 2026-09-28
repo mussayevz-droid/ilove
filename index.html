@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Вход в систему</title>
+    <style>
+        body {
+            background-color: #f4f6f9;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .auth-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            width: 280px;
+        }
+        .auth-card h3 {
+            margin-top: 0;
+            text-align: center;
+            color: #333;
+        }
+        .input-field {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="auth-card">
+        <h3>Личный кабинет</h3>
+        <input type="text" id="userLogin" class="input-field" placeholder="Логин">
+        <input type="password" id="userPassword" class="input-field" placeholder="Пароль">
+        <button onclick="handleLogin()" class="submit-btn">Войти</button>
+    </div>
+
+    <script>
+        const accounts = [
+            { login: "maxim99", password: "p1", name: "Максим" },
+            { login: "elena_k", password: "p2", name: "Елена" },
+            { login: "developer", password: "p3", name: "Олег" },
+            { login: "test", password: "test", name: "Тестировщик" },
+            { login: "user2026", password: "password", name: "Анна" }
+        ];
+
+        function handleLogin() {
+            const enteredLog = document.getElementById("userLogin").value;
+            const enteredPass = document.getElementById("userPassword").value;
+
+            const accountFound = accounts.find(item => item.login === enteredLog && item.password === enteredPass);
+
+            if (accountFound) {
+                alert(`Рады вас видеть снова, ${accountFound.name}!`);
+            } else {
+                alert("Доступ запрещен: введены неверные данные.");
+            }
+        }
+    </script>
+
+</body>
+</html>
